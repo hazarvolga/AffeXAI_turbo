@@ -1,0 +1,63 @@
+# Promptfoo Configuration — affexaiFactory
+# Run: npx promptfoo eval -c ai/tests/promptfooconfig.yaml
+# Docs: https://promptfoo.dev/docs/configuration/
+
+description: "affexaiFactory Prompt Regression Tests"
+
+providers:
+  - id: openai:gpt-4o
+    config:
+      temperature: 0.1
+
+  - id: anthropic:claude-sonnet-4-20250514
+    config:
+      temperature: 0.1
+
+prompts:
+  - ai/prompts/coding/code-review-v1.md
+  - ai/prompts/coding/feature-implementation-v1.md
+  - ai/prompts/coding/bug-fix-v1.md
+
+tests:
+  - description: "Code review detects package boundary violation"
+    vars:
+      code: |
+        // packages/ai-core/src/index.ts
+        import { UserService } from "@affex/auth-core/nestjs";
+        // This violates *-core → *-core dependency rule
+    assert:
+      - type: contains-json
+        value:
+          severity: BLOCKER
+      - type: contains
+        value: "FORBIDDEN"
+
+  - description: "Code review detects .env file commit"
+    vars:
+      code: |
+        // .env
+        DATABASE_URL=postgresql://admin:password123@localhost:5432/prod
+        JWT_SECRET=my-super-secret-key
+    assert:
+      - type: contains
+        value: "BLOCKER"
+      - type: contains
+        value: "secrets"
+
+  - description: "Feature implementation follows naming conventions"
+    vars:
+      feature: "Add retry mechanism to API calls"
+    assert:
+      - type: contains
+        value: "@affex/ai-core"
+      - type: contains
+        value: "camelCase"
+
+  - description: "Bug fix follows TDD approach"
+    vars:
+      bug: "Users query returns soft-deleted records"
+    assert:
+      - type: contains
+        value: "test"
+      - type: contains
+        value: "reproduce"

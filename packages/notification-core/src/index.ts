@@ -1,5 +1,19 @@
-// Layer 2 — OPTIONAL_LATER
-// This package is not yet implemented.
-// When activated, it will provide email (Resend), Slack, Telegram, and in-app notifications.
+export type {
+	EmailOptions,
+	InAppNotification,
+	NotificationChannel,
+	NotificationConfig,
+	NotificationMessage,
+	NotificationResult,
+	SlackOptions,
+	TelegramOptions,
+} from "./types.js";
 
-export {};
+export { createEmailProvider, type EmailProvider } from "./email.js";
+export { createInAppProvider, type InAppProvider } from "./in-app.js";
+export {
+	createNotificationClient,
+	type NotificationClient,
+} from "./factory.js";
+export { createSlackProvider, type SlackProvider } from "./slack.js";
+export { createTelegramProvider, type TelegramProvider } from "./telegram.js";

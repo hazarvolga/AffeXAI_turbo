@@ -1,0 +1,76 @@
+name: Deploy Coolify
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/**"
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect-changes:
+    name: Detect Changed Apps
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.filter.outputs.changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changed apps
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            starter-nest: apps/_starter-nest/**
+            starter-next: apps/_starter-next/**
+            admin-panel: apps/admin-panel/**
+            docs-site: apps/docs-site/**
+
+  deploy:
+    name: Deploy ${{ matrix.app }}
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.apps != '[]' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.detect-changes.outputs.apps) }}
+    steps:
+      - name: Deploy to Coolify
+        run: |
+          APP_NAME="${{ matrix.app }}"
+          COOLIFY_URL="${{ secrets.COOLIFY_BASE_URL }}/api/v1/deploy"
+
+          # Map app names to Coolify service IDs
+          case "$APP_NAME" in
+            starter-nest)
+              SERVICE_ID="${{ secrets.COOLIFY_STARTER_NEST_ID }}"
+              ;;
+            starter-next)
+              SERVICE_ID="${{ secrets.COOLIFY_STARTER_NEXT_ID }}"
+              ;;
+            admin-panel)
+              SERVICE_ID="${{ secrets.COOLIFY_ADMIN_PANEL_ID }}"
+              ;;
+            docs-site)
+              SERVICE_ID="${{ secrets.COOLIFY_DOCS_SITE_ID }}"
+              ;;
+            *)
+              echo "Unknown app: $APP_NAME"
+              exit 1
+              ;;
+          esac
+
+          curl -X POST "$COOLIFY_URL" \
+            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"service_id\": \"$SERVICE_ID\"}"
+
+      - name: Verify deployment
+        run: |
+          echo "Deployment triggered for ${{ matrix.app }}"
+          echo "Monitor at: ${{ secrets.COOLIFY_BASE_URL }}"

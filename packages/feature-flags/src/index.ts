@@ -1,5 +1,16 @@
-// Layer 2 — OPTIONAL_LATER
-// This package is not yet implemented.
-// When activated, it will provide Unleash-based feature flagging.
+export type {
+	FlagValue,
+	FlagDefinition,
+	FlagRule,
+	RolloutPercentage,
+	UserIdTargeting,
+	EnvironmentTargeting,
+	FlagContext,
+} from "./types.js";
 
-export {};
+export { FlagStore } from "./store.js";
+
+export { evaluateFlag } from "./evaluator.js";
+
+export { createFeatureFlagClient } from "./client.js";
+export type { FeatureFlagClient } from "./client.js";
