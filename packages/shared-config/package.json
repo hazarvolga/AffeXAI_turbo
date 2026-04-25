@@ -1,28 +1,28 @@
 {
-  "name": "@affex/shared-config",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Shared configuration presets for the affexaiFactory monorepo",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "exports": {
-    ".": "./src/index.ts",
-    "./tsconfig/base": "./tsconfig/base.json",
-    "./tsconfig/nestjs": "./tsconfig/nestjs.json",
-    "./tsconfig/nextjs": "./tsconfig/nextjs.json",
-    "./biome": "./biome/index.json",
-    "./vitest": "./vitest/index.ts"
-  },
-  "scripts": {
-    "build": "tsc --project tsconfig.json",
-    "typecheck": "tsc --noEmit",
-    "lint": "biome check src/",
-    "test": "vitest run --passWithNoTests",
-    "clean": "rimraf dist"
-  },
-  "devDependencies": {
-    "typescript": "^5.7.3",
-    "vitest": "^2.1.8"
-  },
-  "layer": "ACTIVE_NOW"
+	"name": "@affex/shared-config",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Shared configuration presets for the affexaiFactory monorepo",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./tsconfig/base": "./tsconfig/base.json",
+		"./tsconfig/nestjs": "./tsconfig/nestjs.json",
+		"./tsconfig/nextjs": "./tsconfig/nextjs.json",
+		"./biome": "./biome/index.json",
+		"./vitest": "./vitest/index.ts"
+	},
+	"scripts": {
+		"build": "tsc --project tsconfig.json",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check src/",
+		"test": "vitest run --passWithNoTests",
+		"clean": "rimraf dist"
+	},
+	"devDependencies": {
+		"typescript": "^5.7.3",
+		"vitest": "^2.1.8"
+	},
+	"layer": "ACTIVE_NOW"
 }

@@ -6,11 +6,7 @@ export interface ObservabilityTracerConfig {
 
 export interface ObservabilityTracer {
 	trace(name: string, metadata?: Record<string, unknown>): string;
-	logEvent(
-		traceId: string,
-		name: string,
-		metadata?: Record<string, unknown>,
-	): void;
+	logEvent(traceId: string, name: string, metadata?: Record<string, unknown>): void;
 	logLLMCall(
 		traceId: string,
 		provider: string,
@@ -26,11 +22,7 @@ class NoOpTracer implements ObservabilityTracer {
 		return "";
 	}
 
-	logEvent(
-		_traceId: string,
-		_name: string,
-		_metadata?: Record<string, unknown>,
-	): void {}
+	logEvent(_traceId: string, _name: string, _metadata?: Record<string, unknown>): void {}
 
 	logLLMCall(
 		_traceId: string,
@@ -46,10 +38,7 @@ class LangfuseTracerImpl implements ObservabilityTracer {
 	private publicKey: string;
 	private secretKey: string;
 	private baseUrl: string;
-	private traces: Map<
-		string,
-		{ name: string; events: unknown[]; generations: unknown[] }
-	>;
+	private traces: Map<string, { name: string; events: unknown[]; generations: unknown[] }>;
 
 	constructor(config: ObservabilityTracerConfig) {
 		this.publicKey = config.publicKey ?? "";
@@ -64,11 +53,7 @@ class LangfuseTracerImpl implements ObservabilityTracer {
 		return traceId;
 	}
 
-	logEvent(
-		traceId: string,
-		name: string,
-		metadata?: Record<string, unknown>,
-	): void {
+	logEvent(traceId: string, name: string, metadata?: Record<string, unknown>): void {
 		const trace = this.traces.get(traceId);
 		if (trace) {
 			trace.events.push({ name, metadata });
@@ -95,9 +80,7 @@ class LangfuseTracerImpl implements ObservabilityTracer {
 	}
 }
 
-export function createObservabilityTracer(
-	config?: ObservabilityTracerConfig,
-): ObservabilityTracer {
+export function createObservabilityTracer(config?: ObservabilityTracerConfig): ObservabilityTracer {
 	if (!config?.publicKey || !config?.secretKey) {
 		return new NoOpTracer();
 	}

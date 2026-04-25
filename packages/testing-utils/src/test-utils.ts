@@ -12,9 +12,7 @@ export function wait(ms: number): Promise<void> {
 /**
  * Create a mock Next.js router object.
  */
-export function createMockRouter(
-	overrides: Record<string, unknown> = {},
-): Record<string, unknown> {
+export function createMockRouter(overrides: Record<string, unknown> = {}): Record<string, unknown> {
 	return {
 		push: vi.fn(),
 		replace: vi.fn(),

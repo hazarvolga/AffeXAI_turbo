@@ -1,8 +1,8 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { z } from "zod";
-import { UserSchema, UserRoleSchema, CreateUserSchema } from "./user.js";
-import { PaginationSchema, ApiResponseSchema } from "./api.js";
-import { LoginSchema, TokenPayloadSchema } from "./auth.js";
+import { ApiResponseSchema, PaginationSchema } from "./api.js";
+import { LoginSchema } from "./auth.js";
+import { UserRoleSchema, UserSchema } from "./user.js";
 
 describe("UserRoleSchema", () => {
 	it("should accept valid roles", () => {

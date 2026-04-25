@@ -36,4 +36,3 @@ coverage/
 # Misc
 *.log
 *.tgz
-pnpm-lock.yaml

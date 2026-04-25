@@ -1,5 +1,5 @@
-import { Global, Module } from "@nestjs/common";
 import { createPrismaClient } from "@affex/db-core";
+import { Global, Module } from "@nestjs/common";
 
 @Global()
 @Module({

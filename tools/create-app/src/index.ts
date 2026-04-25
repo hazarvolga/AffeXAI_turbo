@@ -1,4 +1,4 @@
-#!/usr/bin/env node;
+#!/usr/bin/env node
 
 import chalk from "chalk";
 import { generateApp } from "./generator.js";

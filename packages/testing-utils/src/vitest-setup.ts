@@ -1,16 +1,16 @@
-import { beforeAll, afterAll } from "vitest";
+import { afterAll, beforeAll } from "vitest";
 
 export interface VitestSetupOptions {
 	/**
 	 * Enable MSW server interception.
 	 * @default true
 	 */
- enableMsw?: boolean;
+	enableMsw?: boolean;
 	/**
 	 * Enable global test timeout overrides (ms).
 	 * @default 10000
 	 */
- globalTimeout?: number;
+	globalTimeout?: number;
 }
 
 const DEFAULT_OPTIONS: Required<VitestSetupOptions> = {

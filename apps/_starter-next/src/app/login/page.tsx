@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@affex/ui-kit";
 import { Input } from "@affex/ui-kit";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -36,10 +36,7 @@ export default function LoginPage() {
 
 	return (
 		<main className="flex min-h-screen items-center justify-center px-6">
-			<form
-				onSubmit={handleSubmit}
-				className="flex w-full max-w-sm flex-col gap-4"
-			>
+			<form onSubmit={handleSubmit} className="flex w-full max-w-sm flex-col gap-4">
 				<h1 className="text-2xl font-bold">Sign In</h1>
 				{error && <p className="text-sm text-red-600">{error}</p>}
 				<Input

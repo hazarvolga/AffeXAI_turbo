@@ -1,12 +1,12 @@
 {
-  "name": "@affex/admin-panel",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Internal operations panel (Layer 2 — OPTIONAL_LATER)",
-  "main": "./src/index.ts",
-  "scripts": {
-    "dev": "echo 'Layer 2 app — not yet implemented'",
-    "build": "echo 'Layer 2 app — not yet implemented'"
-  },
-  "layer": "OPTIONAL_LATER"
+	"name": "@affex/admin-panel",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Internal operations panel (Layer 2 — OPTIONAL_LATER)",
+	"main": "./src/index.ts",
+	"scripts": {
+		"dev": "echo 'Layer 2 app — not yet implemented'",
+		"build": "echo 'Layer 2 app — not yet implemented'"
+	},
+	"layer": "OPTIONAL_LATER"
 }

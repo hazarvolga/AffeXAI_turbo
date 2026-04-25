@@ -1,4 +1,4 @@
-import { http, HttpResponse, type HttpHandler } from "msw";
+import { http, type HttpHandler, HttpResponse } from "msw";
 
 // --- Auth mock data ---
 
@@ -103,7 +103,7 @@ export function createApiHandlers(baseUrl: string): HttpHandler[] {
 			if (!store.has(String(resource))) {
 				store.set(String(resource), new Map());
 			}
-			store.get(String(resource))!.set(id, item);
+			store.get(String(resource))?.set(id, item);
 			return HttpResponse.json(item, { status: 201 });
 		}),
 
@@ -116,7 +116,7 @@ export function createApiHandlers(baseUrl: string): HttpHandler[] {
 				return HttpResponse.json({ error: "Not found" }, { status: 404 });
 			}
 			const updated = { ...existing, ...body };
-			items!.set(String(id), updated);
+			items?.set(String(id), updated);
 			return HttpResponse.json(updated, { status: 200 });
 		}),
 
@@ -126,7 +126,7 @@ export function createApiHandlers(baseUrl: string): HttpHandler[] {
 			if (!items?.has(String(id))) {
 				return HttpResponse.json({ error: "Not found" }, { status: 404 });
 			}
-			items!.delete(String(id));
+			items?.delete(String(id));
 			return new HttpResponse(null, { status: 204 });
 		}),
 	];

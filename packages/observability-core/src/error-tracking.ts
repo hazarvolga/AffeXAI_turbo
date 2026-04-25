@@ -45,9 +45,7 @@ class ErrorTrackerImpl implements ErrorTracker {
 			try {
 				return await fn(...args);
 			} catch (error) {
-				this.track(
-					error instanceof Error ? error : new Error(String(error)),
-				);
+				this.track(error instanceof Error ? error : new Error(String(error)));
 				throw error;
 			}
 		};

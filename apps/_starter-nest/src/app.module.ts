@@ -1,12 +1,12 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
 import { AuthModule } from "@affex/auth-core/nestjs";
 import { QueueModule } from "@affex/queue-core/nestjs";
+import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
 import { AppController } from "./app.controller";
-import { UsersModule } from "./users/users.module";
-import { HealthModule } from "./health/health.module";
 import databaseConfig from "./config/database";
 import redisConfig from "./config/redis";
+import { HealthModule } from "./health/health.module";
+import { UsersModule } from "./users/users.module";
 
 @Module({
 	imports: [

@@ -1,8 +1,8 @@
 import "reflect-metadata";
 
+import { createLogger } from "@affex/observability-core";
 import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import { createLogger } from "@affex/observability-core";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {

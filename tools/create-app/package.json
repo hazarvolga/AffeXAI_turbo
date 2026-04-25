@@ -1,17 +1,15 @@
 {
-	"name": "create-app",
+	"name": "create-affex-app",
 	"version": "0.1.0",
-	"private": true,
 	"description": "Project scaffolding CLI for @affex/* apps",
 	"bin": {
-		"create-app": "./dist/index.js"
+		"create-affex-app": "./dist/index.js"
 	},
 	"type": "module",
 	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"dev": "tsx src/index.ts",
+		"dev": "node --import tsx src/index.ts",
 		"test": "vitest run --passWithNoTests",
 		"typecheck": "tsc --noEmit",
 		"lint": "biome check src/",
@@ -26,6 +24,7 @@
 	"devDependencies": {
 		"@types/fs-extra": "^11.0.4",
 		"@types/inquirer": "^9.0.7",
+		"tsx": "^4.19.0",
 		"typescript": "^5.7.3",
 		"vitest": "^2.1.8"
 	},
