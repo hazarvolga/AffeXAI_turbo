@@ -1,0 +1,1 @@
+export { default as affexPreset } from "../tailwind/preset.js";

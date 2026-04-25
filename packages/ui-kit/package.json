@@ -1,0 +1,50 @@
+{
+	"name": "@affex/ui-kit",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"description": "React component library built on shadcn/ui patterns with Tailwind CSS",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./utils": "./src/lib/utils.ts",
+		"./button": "./src/components/button.tsx",
+		"./input": "./src/components/input.tsx",
+		"./card": "./src/components/card.tsx",
+		"./data-table": "./src/components/data-table.tsx",
+		"./form": "./src/components/form.tsx",
+		"./modal": "./src/components/modal.tsx"
+	},
+	"scripts": {
+		"build": "vite build",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check src/",
+		"test": "vitest run --passWithNoTests",
+		"clean": "rimraf dist"
+	},
+	"dependencies": {
+		"@affex/design-tokens": "workspace:*",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.469.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tailwind-merge": "^2.6.1"
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.1.0",
+		"@types/react": "^18.3.0",
+		"@types/react-dom": "^18.3.0",
+		"@vitejs/plugin-react": "^4.3.4",
+		"autoprefixer": "^10.4.20",
+		"jsdom": "^25.0.1",
+		"postcss": "^8.4.49",
+		"tailwindcss": "^3.4.17",
+		"typescript": "^5.7.3",
+		"vite": "^6.0.7",
+		"vitest": "^2.1.8"
+	},
+	"layer": "ACTIVE_NOW"
+}

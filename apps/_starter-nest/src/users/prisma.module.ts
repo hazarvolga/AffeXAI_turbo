@@ -1,0 +1,14 @@
+import { Global, Module } from "@nestjs/common";
+import { createPrismaClient } from "@affex/db-core";
+
+@Global()
+@Module({
+	providers: [
+		{
+			provide: "PRISMA_CLIENT",
+			useFactory: () => createPrismaClient(),
+		},
+	],
+	exports: ["PRISMA_CLIENT"],
+})
+export class PrismaModule {}

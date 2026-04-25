@@ -1,0 +1,11 @@
+{
+  "name": "codemod",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Codemod transforms for package version bumps (Layer 3 — SCALE_STAGE)",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "echo 'Layer 3 tool — not yet implemented'"
+  },
+  "layer": "SCALE_STAGE"
+}

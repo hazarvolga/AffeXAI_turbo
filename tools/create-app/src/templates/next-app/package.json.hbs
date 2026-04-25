@@ -1,0 +1,25 @@
+{
+	"name": "{{APP_NAME}}",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --port {{{APP_PORT}}}",
+		"build": "next build",
+		"start": "next start --port {{{APP_PORT}}}",
+		"lint": "biome check src/",
+		"typecheck": "tsc --noEmit",
+		"clean": "rimraf .next dist"
+	},
+	"dependencies": {
+		"next": "^14.0.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"{{#each FEATURES}},
+		"{{this.package}}": "workspace:*"{{/each}}
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.0",
+		"@types/react-dom": "^18.2.0",
+		"typescript": "^5.7.3",
+		"vitest": "^2.1.8"
+	}
+}

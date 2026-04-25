@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/changesets/changesets/main/config.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [["affexai-factory"]],
+  "linked": [],
+  "access": "restricted",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}

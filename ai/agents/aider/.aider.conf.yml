@@ -1,0 +1,50 @@
+# Aider Configuration — affexaiFactory
+
+# Model
+model: anthropic/claude-sonnet-4-20250514
+
+# Files to watch
+watch-files: true
+
+# Auto-commits
+auto-commits: false
+
+# Git settings
+git: true
+
+# Lint before commit
+lint-cmd: pnpm check
+
+# Test before commit
+test-cmd: pnpm test
+
+# Context files (always included)
+read: standards/RULES.md
+read: standards/STACK.md
+read: standards/AGENTS.md
+
+# Ignore patterns
+ignore:
+  - node_modules/
+  - dist/
+  - .next/
+  - .turbo/
+  - coverage/
+  - pnpm-lock.yaml
+  - "*.test.ts"
+  - "*.spec.ts"
+
+# Architecture rules
+map:
+  packages/auth-core: "Authentication and authorization — JWT, OAuth, RBAC"
+  packages/ai-core: "LLM client — multi-provider, retry, caching, Langfuse trace"
+  packages/db-core: "Database — Prisma client factory, soft-delete, audit log"
+  packages/design-tokens: "Design system — Tailwind preset, CSS variables"
+  packages/observability-core: "Observability — pino logger, Langfuse adapter, error tracking"
+  packages/queue-core: "Job queue — BullMQ typed wrapper, DLQ"
+  packages/shared-config: "Config presets — tsconfig, biome, vitest"
+  packages/shared-types: "Shared types — Zod schemas, TypeScript types"
+  packages/testing-utils: "Test helpers — Vitest, MSW, mock factories"
+  packages/ui-kit: "UI components — shadcn/ui based React library"
+  apps/_starter-nest: "Reference NestJS app — all core packages wired"
+  apps/_starter-next: "Reference Next.js app — auth, ui-kit, design-tokens"

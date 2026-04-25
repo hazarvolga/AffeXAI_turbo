@@ -1,0 +1,1 @@
+export { createVitestConfig } from "../vitest/index.js";

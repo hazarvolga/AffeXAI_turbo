@@ -1,0 +1,11 @@
+{
+  "name": "doctor",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Repo health check tool (Layer 2 — OPTIONAL_LATER)",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "echo 'Layer 2 tool — not yet implemented'"
+  },
+  "layer": "OPTIONAL_LATER"
+}

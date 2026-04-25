@@ -1,0 +1,14 @@
+{
+  "name": "@affex/billing-core",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Stripe / Lemon Squeezy billing abstraction (Layer 2 — OPTIONAL_LATER)",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "echo 'Layer 2 package — not yet implemented'",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "layer": "OPTIONAL_LATER"
+}

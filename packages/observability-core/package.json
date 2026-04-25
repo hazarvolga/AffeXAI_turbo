@@ -1,0 +1,30 @@
+{
+	"name": "@affex/observability-core",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Structured logging, Langfuse adapter, and error tracking",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./logger": "./src/logger.js",
+		"./langfuse": "./src/langfuse.js",
+		"./error-tracking": "./src/error-tracking.js"
+	},
+	"scripts": {
+		"build": "tsc --project tsconfig.json",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check src/",
+		"test": "vitest run --passWithNoTests",
+		"clean": "rimraf dist"
+	},
+	"dependencies": {
+		"pino": "^9.6.0",
+		"pino-pretty": "^13.0.0"
+	},
+	"devDependencies": {
+		"typescript": "^5.7.3",
+		"vitest": "^2.1.8"
+	},
+	"layer": "ACTIVE_NOW"
+}
